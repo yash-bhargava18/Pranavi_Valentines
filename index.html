@@ -319,14 +319,28 @@
       letter-spacing: -0.2px;
     }
     .type{
-      display:inline-block;
-      border-right: 2px solid rgba(255,255,255,.55);
-      white-space:nowrap;
-      overflow:hidden;
-      max-width: 100%;
-      animation: caret 1s steps(1) infinite;
-    }
-    @keyframes caret{ 50%{ border-color: transparent; } }
+  position: relative;
+  display: inline;
+  white-space: normal;
+  overflow: visible;
+  word-break: break-word;
+}
+
+/* Blinking caret */
+.type::after{
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  background: rgba(255,255,255,.55);
+  transform: translateY(2px);
+  animation: caretBlink 1s steps(1) infinite;
+}
+
+@keyframes caretBlink{
+  50% { opacity: 0; }
+}
 
     .tiny{
       font-size: 13px;
